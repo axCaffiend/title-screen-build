@@ -1,0 +1,162 @@
+
+body {
+    margin: 0;
+    background-color: black;
+}
+
+div {
+    position: absolute;
+}
+
+.page {
+    margin: 0 auto;
+    width: 1024px;
+    height: 768px;
+    /* border: solid white 1px; */
+    position: relative;
+    overflow: hidden;
+}
+
+
+#title-screen {
+    background: linear-gradient(180deg, rgba(29,26,45,1) 0%, rgba(41,36,54,1) 60%); /* 90deg down, dark to light */
+}
+
+.stars {
+    /* border: solid red 1px; */
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 1024px;
+}
+
+/* ----- TREES BACKGROUND ------ */
+
+.trees-bg {
+    /* border: solid green 1px; */
+    top: 72px;
+    left: 0;
+    width: 2048px;
+    height: 1004px;
+    z-index: 1;
+}
+
+.trees-bg__1 {
+    transform: translate(0,0);
+    animation: trees-scroll__1 20s linear infinite; 
+}
+
+.trees-bg__2 {
+    transform: translate(100%,0);
+    animation: trees-scroll__2 20s linear infinite; 
+}
+
+/* @keyframes trees-bg__1 */
+
+.road {
+    /* border: solid white 1px; */
+    left: 0;
+    bottom: 0;
+    width: 1028px;
+    height: 127px;
+    background-color: #1D1A21;
+    z-index: 2;
+}
+
+
+/* ----- TREES FOREGROUND ------ */
+
+.trees-fg {
+    /* border: solid red 1px; */
+
+    background: url("images/SVG/trees-foreground.svg");
+    top: 120px;
+    left: 0;
+
+    width: 1024px;
+    height: 548px;
+    z-index: 2;
+
+}
+.trees-fg__1 {
+    transform: none;
+     animation: trees-scroll__1 2s linear infinite; 
+}
+
+.trees-fg__2 {
+    transform: translate(100%,0);
+
+    animation: trees-scroll__2 2s linear infinite; 
+}
+
+@keyframes trees-scroll__1 {
+    from {
+        transform: translate(0,0);}
+
+    to {
+        transform: translate(-100%,0);
+    }
+}
+
+@keyframes trees-scroll__2 {
+    from {
+        transform: translate(100%,0);}
+
+    to {
+        transform: translate(0,0);
+    }
+}
+
+/* ----- CAR ------ */
+
+.car {
+    /* border: solid red 1px; */
+    position: relative;
+    left: 121px;
+    top: 424px;
+    z-index: 2;
+}
+
+.car-body {
+    position: inherit;
+    animation: car-body-bumps 2s linear infinite;
+}
+
+@keyframes car-body-bumps {
+    0% {
+        transform: translate(0,0);
+    }
+    25% {
+        transform: translate(0,1%)
+    }
+
+    75% {
+        transform: translate(0,1%);
+    }
+}
+
+.car-wheel {
+    transform-origin: center;
+    animation: car-wheel-rotate 10ms linear infinite; 
+}
+
+.car-wheel__back {
+    top: 156px;
+    left: 67px;
+}
+
+.car-wheel__front {
+    top: 156px;
+    left: 256px;
+
+}
+
+@keyframes car-wheel-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(350deg);
+    }
+}
+
