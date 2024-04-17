@@ -1,3 +1,18 @@
+/* //////////////////////////////// */
+/*             TO DO                */
+/* //////////////////////////////// */
+/* 
+    - Added clouds, need to work out how to loop cloud-drift properly and correct start position
+
+    - Add fade in/out to clouds
+
+    - Add start button
+
+    - 
+*/
+
+
+
 
 body {
     margin: 0;
@@ -85,7 +100,7 @@ div {
 
 .car {
     /* border: solid red 1px; */
-    position: relative;
+    /* position: relative; */
     left: 121px;
     top: 424px;
     z-index: 2;
@@ -137,42 +152,50 @@ div {
 /* ----- CLOUDS ----- */
 
 .cloud-container {
-
+    position: relative;
     border: solid 1px yellow;
-    width: 2048px;
-    height: 600px;
+    width: 100%;
+    height: 50%;
     position: top left;
 }
 
 .cloud {
     position: absolute;
-    z-index: 1;
-    /* animation: cloud-drift 10s linear infinite; */
+    animation: cloud-drift 10s linear infinite;
 }
 
 .cloud-1 {
     /* display: none; */
     border: solid 1px red;
-    top: 47px;
+    top: 5%;
+    left: 55%;
+
 }
 
 .cloud-2 {
     border: solid 1px green;
+    top: 6%;
+    left: 5%;
 }
 
 .cloud-3 {
     border: solid 1px blue;
+    top: 8%;
+    left: 75%;
+
 }
 
 .cloud-4 {
     border: solid 1px yellow;
+    top: 10%;
+    left: 30%;
 }
 
 @keyframes cloud-drift {
     0% {
-        transform: translate(200%,0);
+        transform: translate(100%,0);
     }
     100% {
-        transform: translate(0%,0);
+        transform: translate(-100,0);
     }
 }
