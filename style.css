@@ -14,7 +14,7 @@ div {
     height: 768px;
     /* border: solid white 1px; */
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -34,24 +34,42 @@ div {
 
 .trees-bg {
     /* border: solid green 1px; */
+    background: url("images/SVG/trees-background.svg") repeat-x left center;
     top: 72px;
     left: 0;
-    width: 2048px;
+    width: 4096px;
     height: 1004px;
     z-index: 1;
+    animation: trees-scroll 20s linear infinite;
 }
 
-.trees-bg__1 {
-    transform: translate(0,0);
-    animation: trees-scroll__1 20s linear infinite; 
+
+/* ----- TREES FOREGROUND ------ */
+
+.trees-fg {
+    background: url("images/SVG/trees-foreground.svg") repeat-x left center;
+    top: 120px;
+    left: 0;
+    
+    width: 2048px;
+    height: 548px;
+    z-index: 2;
+    
+    animation: trees-scroll 1.5s  linear infinite;
 }
 
-.trees-bg__2 {
-    transform: translate(100%,0);
-    animation: trees-scroll__2 20s linear infinite; 
+/* Trees scroll animation */
+
+@keyframes trees-scroll {
+    from {
+        background-position: right;
+    }
+    to {
+        background-position: left;
+    }
 }
 
-/* @keyframes trees-bg__1 */
+/* ----- ROAD ----- */
 
 .road {
     /* border: solid white 1px; */
@@ -61,50 +79,6 @@ div {
     height: 127px;
     background-color: #1D1A21;
     z-index: 2;
-}
-
-
-/* ----- TREES FOREGROUND ------ */
-
-.trees-fg {
-    /* border: solid red 1px; */
-
-    background: url("images/SVG/trees-foreground.svg");
-    top: 120px;
-    left: 0;
-
-    width: 1024px;
-    height: 548px;
-    z-index: 2;
-
-}
-.trees-fg__1 {
-    transform: none;
-     animation: trees-scroll__1 2s linear infinite; 
-}
-
-.trees-fg__2 {
-    transform: translate(100%,0);
-
-    animation: trees-scroll__2 2s linear infinite; 
-}
-
-@keyframes trees-scroll__1 {
-    from {
-        transform: translate(0,0);}
-
-    to {
-        transform: translate(-100%,0);
-    }
-}
-
-@keyframes trees-scroll__2 {
-    from {
-        transform: translate(100%,0);}
-
-    to {
-        transform: translate(0,0);
-    }
 }
 
 /* ----- CAR ------ */
@@ -160,3 +134,45 @@ div {
     }
 }
 
+/* ----- CLOUDS ----- */
+
+.cloud-container {
+
+    border: solid 1px yellow;
+    width: 2048px;
+    height: 600px;
+    position: top left;
+}
+
+.cloud {
+    position: absolute;
+    z-index: 1;
+    /* animation: cloud-drift 10s linear infinite; */
+}
+
+.cloud-1 {
+    /* display: none; */
+    border: solid 1px red;
+    top: 47px;
+}
+
+.cloud-2 {
+    border: solid 1px green;
+}
+
+.cloud-3 {
+    border: solid 1px blue;
+}
+
+.cloud-4 {
+    border: solid 1px yellow;
+}
+
+@keyframes cloud-drift {
+    0% {
+        transform: translate(200%,0);
+    }
+    100% {
+        transform: translate(0%,0);
+    }
+}
