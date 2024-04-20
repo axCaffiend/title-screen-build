@@ -2,17 +2,11 @@
 /*             TO DO                */
 /* //////////////////////////////// */
 /* 
-    - Added clouds, need to work out how to loop cloud-drift properly and correct start position
-
-    - Add fade in/out to clouds
-
     - Add start button
-
-    - 
 */
 
 
-
+/* ----- GLOBALS ------*/
 
 body {
     margin: 0;
@@ -23,16 +17,27 @@ div {
     position: absolute;
 }
 
+button {
+    position: absolute;
+}
+
+/* USER */
+
+:root {
+    --light-yellow: rgb(224,208,141,1.0);
+    --dark-purple_text: rgb(31,27,37,1.0);
+}
+
 .page {
     margin: 0 auto;
     width: 1024px;
     height: 768px;
     /* border: solid white 1px; */
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
-
+/* ------ TITLE SCREEN ------ */
 #title-screen {
     background: linear-gradient(180deg, rgba(29,26,45,1) 0%, rgba(41,36,54,1) 60%); /* 90deg down, dark to light */
 }
@@ -152,50 +157,104 @@ div {
 /* ----- CLOUDS ----- */
 
 .cloud-container {
+    /* border: solid 1px yellow; */
     position: relative;
-    border: solid 1px yellow;
-    width: 100%;
+    width: 200%;
     height: 50%;
     position: top left;
 }
 
 .cloud {
     position: absolute;
-    animation: cloud-drift 10s linear infinite;
+    animation: cloud-drift 35s linear infinite;
 }
 
 .cloud-1 {
-    /* display: none; */
-    border: solid 1px red;
+    /* border: solid 1px red; */
     top: 5%;
-    left: 55%;
+    /* left: 55%; */
+    animation-delay: -25s;
 
 }
 
 .cloud-2 {
-    border: solid 1px green;
+    /* border: solid 1px green; */
     top: 6%;
-    left: 5%;
+    /* left: 5%; */
+    animation-delay: -2s;
 }
 
 .cloud-3 {
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
     top: 8%;
-    left: 75%;
-
+    /* left: 75%; */
+    animation-delay: -22s;
 }
 
 .cloud-4 {
-    border: solid 1px yellow;
+    /* border: solid 1px yellow; */
     top: 10%;
-    left: 30%;
+    /* left: 30%; */
+    animation-delay: -15s;
 }
 
 @keyframes cloud-drift {
     0% {
-        transform: translate(100%,0);
+        opacity: 0;
+        transform-origin: top left;
+        transform: translate(200%, 0);
     }
+
+    20% {
+        opacity: 1.0;
+    }
+
+    80% {
+        opacity: 1.0;
+    }
+
     100% {
-        transform: translate(-100,0);
+        opacity: 0;
+        transform: translate(-200%,0);
+    }
+
+}
+
+/* ----- START BUTTON ----- */
+
+.start-button {
+
+    --start-shadow-x: -2px;
+    --start-shadow-y: 2px;
+
+    --end-shadow-x: -4px;
+    --end-shadow-y: -4px;
+
+    bottom: 17%;
+    right: 10%;
+    z-index: 2;
+
+    border: none;
+    background: transparent;
+    
+    color: var(--dark-purple_text);
+    font-family: "Andika" , sans-serif;
+    font-size: 5em;
+    font-weight: bolder;
+    text-transform: uppercase;
+
+    animation: start-button-shadow 1s alternate infinite;
+
+}
+
+@keyframes start-button-shadow {
+    0% {
+        text-shadow: var(--start-shadow-x) var(--start-shadow-y) 0px var(--light-yellow), 0 0 8px rgb(224,208,141, 0);
+    }
+    
+    100% {
+        transform: translate(0, 8px);
+        text-shadow: var(--end-shadow-x) var(--end-shadow-y) 0px var(--light-yellow), 0 0 16px rgb(224,208,141, 1.0);
     }
 }
+
