@@ -105,7 +105,6 @@ button {
 
 .car {
     /* border: solid red 1px; */
-    /* position: relative; */
     left: 121px;
     top: 424px;
     z-index: 2;
@@ -131,7 +130,7 @@ button {
 
 .car-wheel {
     transform-origin: center;
-    animation: car-wheel-rotate 10ms linear infinite; 
+    animation: car-wheel-rotate 600ms linear infinite; 
 }
 
 .car-wheel__back {
@@ -243,11 +242,11 @@ button {
     font-weight: bolder;
     text-transform: uppercase;
 
-    animation: start-button-shadow 1s alternate infinite;
+    animation: start-button-glow 1s alternate infinite;
 
 }
 
-@keyframes start-button-shadow {
+@keyframes start-button-glow {
     0% {
         text-shadow: var(--start-shadow-x) var(--start-shadow-y) 0px var(--light-yellow), 0 0 8px rgb(224,208,141, 0);
     }
