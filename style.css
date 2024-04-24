@@ -25,7 +25,8 @@ button {
 
 :root {
     --light-yellow: rgb(224,208,141,1.0);
-    --dark-purple_text: rgb(31,27,37,1.0);
+    /* --dark-purple_text: rgb(31,27,37,1.0); */
+    --dark-purple-text: #1D1A21;
 }
 
 .page {
@@ -37,7 +38,12 @@ button {
     overflow: hidden;
 }
 
+
+/* -------------------------- */
 /* ------ TITLE SCREEN ------ */
+/* -------------------------- */
+
+
 #title-screen {
     background: linear-gradient(180deg, rgba(29,26,45,1) 0%, rgba(41,36,54,1) 60%); /* 90deg down, dark to light */
 }
@@ -50,32 +56,92 @@ button {
     width: 1024px;
 }
 
+/* ----- BG HILL ----- */
+
+.bg-hill {
+    /* display: none; */
+    /* border: solid 1px red; */
+    top: 380px;
+    width: 1024px;
+    height: 300px;
+}
+
+/* ----- MOON ----- */
+.moon {
+    top: 300px;
+    left: 515px;
+    width: 500px;
+    transition: all 2s 2s;
+}
+
+.moon-up {
+    top: 80px;
+}
+
+/* ----- UMBRA MANOR ----- */
+
+.umbra-manor {
+    /* border: solid 1px yellow; */
+    width: 200px;
+    top: 230px;
+    left: 660px;
+}
+
+/* ----- LOGO ----- */
+
+.logo_text {
+    /* display: none; */
+    opacity: 0%;
+    width: 300px;
+    text-align: center;
+    top: 100px;
+    left: 252px;
+    background: radial-gradient(circle, rgba(123,107,144,0.3) 0%, rgba(41,36,54, 0) 75%);
+    transition: all 2s 4s;
+}
+
+.logo_text-reveal {
+    /* display: block; */
+    top: 79px;
+    opacity: 100%;
+    z-index: 3;
+    /* background: radial-gradient(circle, rgba(123,107,144,0.2) 0%, rgba(41,36,54, 0) 100%); */
+}
+
+
+
 /* ----- TREES BACKGROUND ------ */
 
 .trees-bg {
     /* border: solid green 1px; */
     background: url("images/SVG/trees-background.svg") repeat-x left center;
+    background-size: 50%;
     top: 72px;
     left: 0;
+
     width: 4096px;
     height: 1004px;
     z-index: 1;
     animation: trees-scroll 20s linear infinite;
+    transition: all 3.5s;
 }
-
 
 /* ----- TREES FOREGROUND ------ */
 
 .trees-fg {
-    background: url("images/SVG/trees-foreground.svg") repeat-x left center;
+
+    background: url("images/SVG/trees-foreground.svg") repeat-x;
+    background-size: 50%;
+
     top: 120px;
     left: 0;
     
-    width: 2048px;
-    height: 548px;
+    width: 200%;
+    height: 70%;
     z-index: 2;
     
     animation: trees-scroll 1.5s  linear infinite;
+    transition: all 3s;
 }
 
 /* Trees scroll animation */
@@ -89,6 +155,18 @@ button {
     }
 }
 
+.trees-fg-zoom-out {
+    top: 450px;
+    background-size: 25%;
+    animation-play-state: paused;
+}
+
+.trees-bg-zoom-out {
+    top: 250px;
+    background-size: 25%;
+    animation-play-state: paused;
+}
+
 /* ----- ROAD ----- */
 
 .road {
@@ -99,6 +177,11 @@ button {
     height: 127px;
     background-color: #1D1A21;
     z-index: 2;
+    transition: all 3s;
+}
+
+.road-zoom-out {
+    bottom: -200px;
 }
 
 /* ----- CAR ------ */
@@ -108,6 +191,8 @@ button {
     left: 121px;
     top: 424px;
     z-index: 2;
+    width: 900px;
+    height: 275px;
 }
 
 .car-body {
@@ -153,6 +238,23 @@ button {
     }
 }
 
+/* Start Button Clicked */
+
+.car-move-off {
+    animation: car-move-off 3s ease-in forwards;
+}
+
+@keyframes car-move-off {
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(1024px,0)
+    }
+}
+
+
 /* ----- CLOUDS ----- */
 
 .cloud-container {
@@ -166,6 +268,7 @@ button {
 .cloud {
     position: absolute;
     animation: cloud-drift 35s linear infinite;
+    transform: scale(10%, 10%);
 }
 
 .cloud-1 {
@@ -200,8 +303,8 @@ button {
 @keyframes cloud-drift {
     0% {
         opacity: 0;
-        transform-origin: top left;
-        transform: translate(200%, 0);
+        /* transform-origin: top left; */
+        transform: translate(400%, 0);
     }
 
     20% {
@@ -235,8 +338,9 @@ button {
 
     border: none;
     background: transparent;
+    cursor: pointer;
     
-    color: var(--dark-purple_text);
+    color: var(--dark-purple-text);
     font-family: "Andika" , sans-serif;
     font-size: 5em;
     font-weight: bolder;
@@ -244,6 +348,12 @@ button {
 
     animation: start-button-glow 1s alternate infinite;
 
+}
+
+/* Start Button clicked */
+
+.start-button-clicked {
+    animation: start-button-clicked 150ms linear alternate infinite, start-button-fadeout-lift 1s 0.5s ease-out forwards;
 }
 
 @keyframes start-button-glow {
@@ -257,3 +367,27 @@ button {
     }
 }
 
+@keyframes start-button-clicked {
+    0% {
+        text-shadow: var(--start-shadow-x) var(--start-shadow-y) 0px var(--light-yellow), 0 0 8px rgb(224,208,141, 0), 0 0 0 var(--light-yellow);
+    }
+
+    100% {
+        text-shadow: var(--end-shadow-x) var(--end-shadow-y) 0px var(--light-yellow), 0 0 16px rgb(224,208,141, 1.0), 0 0 25px var(--light-yellow);
+    }
+}
+
+@keyframes start-button-fadeout-lift {
+    0% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 10%;
+    }
+
+    100% {
+        transform: translate(0, -200px);
+        opacity: 0%;
+    }
+}
