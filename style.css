@@ -2,7 +2,7 @@
 /*             TO DO                */
 /* //////////////////////////////// */
 /* 
-    - Add start button
+
 */
 
 
@@ -89,25 +89,59 @@ button {
 
 /* ----- LOGO ----- */
 
+
+.logo-container {
+    opacity: 0;
+    z-index: 3;
+    top: 100px;
+    left: -40px;
+    transition: all 2s 3.5s;
+}
+
+.logo-reveal {
+    top: 60px;
+    opacity: 1.0;
+    animation: logo-hover 1s ease-in-out alternate infinite;
+}
+
+@keyframes logo-hover {
+    from {
+        transform: translate(0,0);
+    }
+    to {
+        transform: translate(0,-20px);
+    }
+}
+
+.logo_ear-l {
+    width: 56px;
+    top: 60px;
+    left: 240px;
+    /* transition-delay: 6s; */
+}
+
+.logo_ear-r {
+    width: 56px;
+    top: 55px;
+    left: 490px;
+    /* transition-delay: 6s; */
+}
+
+.logo_teeth {
+    width: 102px;
+    top: 355px;
+    left: 352px;
+    /* transition-delay: 7s; */
+}
+
 .logo_text {
-    /* display: none; */
-    opacity: 0%;
     width: 300px;
     text-align: center;
-    top: 100px;
+    top: 80px;
     left: 252px;
     background: radial-gradient(circle, rgba(123,107,144,0.3) 0%, rgba(41,36,54, 0) 75%);
-    transition: all 2s 4s;
+    /* transition-delay: 4s; */
 }
-
-.logo_text-reveal {
-    /* display: block; */
-    top: 79px;
-    opacity: 100%;
-    z-index: 3;
-    /* background: radial-gradient(circle, rgba(123,107,144,0.2) 0%, rgba(41,36,54, 0) 100%); */
-}
-
 
 
 /* ----- TREES BACKGROUND ------ */
